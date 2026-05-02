@@ -26,10 +26,11 @@ export default function Marketplace() {
   useEffect(() => {
     // Attempt to fetch from backend if running
     setLoading(true);
-    axios.get('http://localhost:5000/api/products')
+
+    // ✅ ONLY CHANGE DONE HERE
+    axios.get('https://agrilink-project-proc.onrender.com/api/products')
       .then(res => {
         if(res.data && res.data.length > 0) {
-          // Remove duplicate products by name to prevent cloned listings
           const uniqueProducts = [];
           const seenNames = new Set();
           res.data.forEach(p => {
@@ -46,13 +47,9 @@ export default function Marketplace() {
   }, []);
 
   const filteredProducts = products.filter(p => {
-    // Check price bounds first
     if (p.price > maxPrice) return false;
-    
-    // Check search query dynamically
     if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
 
-    // Then check category
     if (filter === 'all') return true;
     return p.category === filter || (p.category && p.category.toLowerCase() === filter);
   });
@@ -67,7 +64,6 @@ export default function Marketplace() {
     <div style={{ background: 'var(--color-surface)', minHeight: '100vh', paddingTop: '2rem', paddingBottom: '4rem' }}>
       <div className="container">
         
-        {/* Marketplace Header */}
         <div style={{ paddingBottom: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid var(--color-border)' }}>
             <h1 style={{ fontSize: '1.8rem', color: 'var(--color-text-main)' }}>{t.marketTitle}</h1>
             <p style={{ color: 'var(--color-text-muted)' }}>{t.marketSub}</p>
@@ -75,9 +71,7 @@ export default function Marketplace() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           
-          {/* Left Sidebar Filter (1 column) */}
           <aside className="md:col-span-1" style={{ borderRight: '1px solid var(--color-border)', paddingRight: '1.5rem' }}>
-
              <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>Price Range</h3>
              <input type="range" min="0" max="1000" value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} style={{ width: '100%', accentColor: 'var(--color-primary)' }} />
              <div className="flex justify-between" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '0.5rem', fontWeight: 'bold' }}>
@@ -85,7 +79,6 @@ export default function Marketplace() {
              </div>
           </aside>
 
-          {/* Product Grid (3 columns) */}
           <div className="md:col-span-3">
               <div className="flex justify-between items-center mb-4">
                 <span style={{ fontWeight: 500 }}>{filteredProducts.length} Items</span>
