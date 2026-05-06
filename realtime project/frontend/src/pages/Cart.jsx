@@ -30,7 +30,7 @@ export default function Cart() {
       total_price: cartTotal + DELIVERY_FEE
     };
 
-    axios.post('http://localhost:5000/api/orders', orderPayload)
+    axios.post('https://agrilink-project-proc.onrender.com/api/orders', orderPayload)
       .then(res => {
         alert("Order successfully placed!");
         clearCart();
