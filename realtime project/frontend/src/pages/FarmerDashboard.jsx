@@ -300,7 +300,7 @@ axios.post('https://agrilink-project-proc.onrender.com/api/products', { ...newPr
                 <input type="file" accept="image/*" className="input" onChange={handleImageUpload} style={{ padding: '0.4rem' }} />
                 {newProduct.image && (
                   <div style={{ marginTop: '0.5rem', width: '100px', height: '100px', borderRadius: 'var(--radius-sm)', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-                    <img src={newProduct.image.startsWith('http') ? newProduct.image : 'http://localhost:5000' + newProduct.image} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={newProduct.image.startsWith('http') ? newProduct.image : 'http://agrilink-project-proc.onrender.com' + newProduct.image} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                 )}
               </div>
