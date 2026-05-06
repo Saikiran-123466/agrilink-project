@@ -107,6 +107,7 @@ axios.post('https://agrilink-project-proc.onrender.com/api/products', { ...newPr
 } catch (err) {
   alert("Failed to upload image");
   console.error(err);
+}
 };
 
   return (
