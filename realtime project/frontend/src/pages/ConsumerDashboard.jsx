@@ -17,12 +17,12 @@ export default function ConsumerDashboard() {
 
   useEffect(() => {
     // Fetch mock AI recommendations
-    axios.get('http://localhost:5000/api/ai/recommendations/consumer/1')
+    axios.get('https://agrilink-project-proc.onrender.com/api/ai/recommendations/consumer/1')
       .then(res => setRecommendations(res.data))
       .catch(err => console.log(err));
 
     if (user) {
-      axios.get(`http://localhost:5000/api/orders/consumer/${user.id}`)
+      axios.get(`https://agrilink-project-proc.onrender.com/api/orders/consumer/${user.id}`)
         .then(res => setOrders(res.data))
         .catch(err => console.log('Error fetching orders:', err));
     }
