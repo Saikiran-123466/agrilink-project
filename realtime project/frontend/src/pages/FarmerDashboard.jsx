@@ -25,7 +25,7 @@ export default function FarmerDashboard() {
     if (user) {
       fetchProducts();
       fetchOrders();
-    }
+    },[user]);
 
     const interval = setInterval(() => {
       setProfileViews(prev => prev + Math.floor(Math.random() * 3));
