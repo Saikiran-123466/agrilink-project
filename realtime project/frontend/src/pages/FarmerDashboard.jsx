@@ -318,16 +318,48 @@ function StatCard({ icon, title, value, trend, color }) {
   return (
     <div className="card" style={{ padding: '1.5rem' }}>
       <div className="flex justify-between items-start mb-4">
-        <div style={{ background: `${color}20`, padding: '0.75rem', borderRadius: 'var(--radius-md)', color: color }}>
+        <div
+          style={{
+            background: `${color}20`,
+            padding: '0.75rem',
+            borderRadius: 'var(--radius-md)',
+            color: color
+          }}
+        >
           {icon}
         </div>
-        <span style={{ color: 'var(--color-primary)', fontWeight: 600, fontSize: '0.9rem' }}>{trend}</span>
+
+        <span
+          style={{
+            color: 'var(--color-primary)',
+            fontWeight: 600,
+            fontSize: '0.9rem'
+          }}
+        >
+          {trend}
+        </span>
       </div>
+
       <div>
-        <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', marginBottom: '0.2rem' }}>{title}</p>
-        <h3 style={{ fontSize: '1.8rem', color: 'var(--color-text-main)' }}>{value}</h3>
+        <p
+          style={{
+            color: 'var(--color-text-muted)',
+            fontSize: '0.9rem',
+            marginBottom: '0.2rem'
+          }}
+        >
+          {title}
+        </p>
+
+        <h3
+          style={{
+            fontSize: '1.8rem',
+            color: 'var(--color-text-main)'
+          }}
+        >
+          {value}
+        </h3>
       </div>
     </div>
-  )
+  );
 }
-
