@@ -151,7 +151,17 @@ export default function ConsumerDashboard() {
               {recommendations.length > 0 ? recommendations.map((item, idx) => (
                 <div key={idx} className="flex gap-4 p-3" style={{ border: '1px solid #ebebeb', borderRadius: 'var(--radius-md)', background: '#fff' }}>
                   <div style={{ width: '60px', height: '60px', background: '#eee', borderRadius: 'var(--radius-sm)', overflow: 'hidden' }}>
-                    <img src={getProductImage(item.name, item.image)} alt={translateProduct(item.name)} style={{width:'100%', height:'100%', objectFit: 'cover'}}/>
+                   <img
+  src={
+    item.image
+      ? item.image.startsWith('http')
+        ? item.image
+        : 'https://agrilink-project-proc.onrender.com' + item.image
+      : getProductImage(item.name)
+  }
+  alt={translateProduct(item.name)}
+  style={{ width:'100%', height:'100%', objectFit:'cover' }}
+/>
                   </div>
                   <div>
                     <h4 style={{ fontWeight: 600, color: 'var(--color-text-main)' }}>{translateProduct(item.name)} <span style={{ color: 'var(--color-secondary)' }}>₹{item.price.toFixed(2)}</span></h4>
